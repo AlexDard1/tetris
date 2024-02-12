@@ -2,6 +2,7 @@ import pygame
 import random
 from pygame import mixer
 
+path = "./Tetris/"
 colors = [
     (0, 0, 0),
     (120, 37, 179),
@@ -97,8 +98,8 @@ class Tetris:
                 for i1 in range(i, 1, -1):
                     for j in range(self.width):
                         self.field[i1][j] = self.field[i1 - 1][j]
-                        mixer.music.load('/Users/alexdardarian/desktop/Tetris/mixkit-glass-break-with-hammer-thud-759.wav')
-                        mixer.Channel(2).play(pygame.mixer.Sound('/Users/alexdardarian/desktop/Tetris/mixkit-glass-break-with-hammer-thud-759.wav'))
+                        mixer.music.load(path+ 'mixkit-glass-break-with-hammer-thud-759.wav')
+                        mixer.Channel(2).play(pygame.mixer.Sound(path+ 'mixkit-glass-break-with-hammer-thud-759.wav'))
         self.score += lines ** 2
 
     def go_space(self):
@@ -118,14 +119,14 @@ class Tetris:
             for j in range(4):
                 if i * 4 + j in self.figure.image():
                     self.field[i + self.figure.y][j + self.figure.x] = self.figure.color
-        mixer.music.load('/Users/alexdardarian/desktop/Tetris/mixkit-falling-hit-on-gravel-756.wav')
-        mixer.Channel(2).play(pygame.mixer.Sound('/Users/alexdardarian/desktop/Tetris/mixkit-falling-hit-on-gravel-756.wav'))
+        mixer.music.load(path+ 'mixkit-falling-hit-on-gravel-756.wav')
+        mixer.Channel(2).play(pygame.mixer.Sound(path+ 'mixkit-falling-hit-on-gravel-756.wav'))
         self.break_lines()
         self.new_figure()
         if self.intersects():
             self.state = "gameover"
-            mixer.music.load('/Users/alexdardarian/desktop/Tetris/mixkit-arcade-fast-game-over-233.wav')
-            mixer.Channel(2).play(pygame.mixer.Sound('/Users/alexdardarian/desktop/Tetris/mixkit-arcade-fast-game-over-233.wav'))
+            mixer.music.load(path+ 'Tetris/mixkit-arcade-fast-game-over-233.wav')
+            mixer.Channel(2).play(pygame.mixer.Sound(path+ 'mixkit-arcade-fast-game-over-233.wav'))
 
     def go_side(self, dx):
         old_x = self.figure.x
@@ -142,7 +143,7 @@ class Tetris:
     def Work_Button():
         loop = 1
         pygame.display.set_caption('image')
-        work = pygame.image.load('/Users/alexdardarian/desktop/Tetris/excel.jpeg').convert()
+        work = pygame.image.load(path+ 'excel.jpeg').convert()
         screen.blit(work,(0,0))
         pygame.display.flip()
         mixer.music.pause()
@@ -189,8 +190,8 @@ pygame.init()
 
 # Add music
 mixer.init()
-mixer.music.load('/Users/alexdardarian/desktop/Tetris/Tetris.mp3')
-tetris_sound = mixer.Sound('/Users/alexdardarian/desktop/Tetris/Tetris.mp3')
+mixer.music.load(path+ 'Tetris.mp3')
+tetris_sound = mixer.Sound(path+ 'Tetris.mp3')
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
